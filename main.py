@@ -5,7 +5,8 @@ from utils import config
 from discord.ext import commands
 import logging
 
-logging.basicConfig(level=logging.INFO)
+fmt = '[%(levelname)s] %(asctime)s - %(name)s:%(lineno)d - %(message)s'
+logging.basicConfig(format=fmt, level=logging.INFO)
 
 bot_config = config.Config()
 settings = bot_config.create()
