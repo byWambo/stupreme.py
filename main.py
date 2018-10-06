@@ -4,6 +4,7 @@ import discord
 from utils import config
 from discord.ext import commands
 import logging
+import random
 
 fmt = '[%(levelname)s] %(asctime)s - %(name)s:%(lineno)d - %(message)s'
 logging.basicConfig(format=fmt, level=logging.INFO)
@@ -19,12 +20,14 @@ cogs = [
 
 for cog in cogs:
     bot.load_extension(cog)
+    
+play_list = ["a game", "with Barbie <3", "with Stupreme Merch", "with Dome", "with Wambo"]
 
 
 @bot.event
 async def on_ready():
     logging.info('------------------Logged in as " + bot.user.name + " (" + bot.user.id + ")------------------')
     logging.info("\n".join([f"{s.name} ({str(s.id)})" for s in bot.guilds]))
-    await bot.change_presence(activity=discord.Game(name="a game"))
+    await bot.change_presence(activity=discord.Game(name=random.choice(play_list))
 
 bot.run(settings["token"])
